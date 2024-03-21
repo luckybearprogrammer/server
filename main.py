@@ -21,7 +21,7 @@ def write_number():
         base = {int(line.strip().split()[0]): line.strip().split()[1] for line in file}
     key = next(key for key, value in base.items() if value == idUser)
     base[number] = base.pop(key)
-    base = dict(sorted(base.items(), reverse=True))
+    base = dict(sorted(base.items()))
     with open("numbers.txt", 'w', encoding="utf-8") as file:
         for key, item in base.items():
             file.write(f"{key} {item}\n")
@@ -61,7 +61,7 @@ def can():
         with open("users.txt", "a+", encoding="utf-8") as file:
             file.write(f"{nick}\n")
         with open("numbers.txt", "a+", encoding="utf-8") as file:
-            file.write(f"0 {nick}\n")
+            file.write(f"999 {nick}\n")
         return jsonify({'message': 'nice', 'can': True})
     else:
         return jsonify({'message': 'you are in base', 'can': False})
